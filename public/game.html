@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/icon.jpg" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>Checkers Game</title>
+  </head>
+  <body>
+    <div class="main-content">
+      <div class="left-side">
+        <div class="btn-continer">
+          <!-- <button>Resign</button>
+          <button>Rules</button> -->
+        </div>
+        <div class="player-info"></div>
+      </div>
+      <div class="center-page">
+        <div id="board" class="board"></div>
+      </div>
+      <div class="right-side">
+        <div class="opponent-info"></div>
+        <div class="turn-message">
+          <p><span id="turn">Red</span> turn!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal none" id="waiting-modal">
+      <div class="modal-contact">
+        <p class="message">Waiting for the second player to respond</p>
+        <div class="btn-container">
+          <button id="cancel-invite" class="modal-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal none" id="return-to-lobby-modal">
+      <div class="modal-contact">
+        <p class="message">Your opponent has returned to the lobby</p>
+        <div class="btn-container">
+          <button id="cancel-invite" class="modal-btn">Return to lobby</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal none" id="get-invite-modal">
+      <div class="modal-contact">
+        <div>
+          <p class="message">
+            your opponent want to do a rematch <br>
+            Do you want to play again?
+          </p>
+        </div>
+        <div class="btns-container">
+          <button id="approve-rematch" class="modal-btn">Yes</button>
+          <button id="decline-rematch" class="modal-btn">NO</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal none" id="game-over-modal">
+      <div class="modal-contact">
+        <div>
+          <p class="message">
+            You <span id="game-result"></span><br />
+            Your new rating is<span id="new-rating"></span>
+          </p>
+        </div>
+        <div class="btns-container">
+          <button id="exit" class="modal-btn">Exit</button>
+          <button id="rematch" class="modal-btn">Rematch</button>
+        </div>
+      </div>
+    </div>
+
+    <script id="player-info-template" type="text/html">
+      <p>{{username}}</p>
+      <p>{{rating}}</p>
+    </script>
+
+    <script id="opponent-info-template" type="text/html">
+      <p>{{username}}</p>
+      <p>{{rating}}</p>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/game.js"></script>
+  </body>
+</html>

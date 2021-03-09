@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/icon.jpg" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>Checkers Lobby</title>
+  </head>
+  <body>
+    <h1 class="center">Checkers Online</h1>
+    <h2 class="center">Lobby</h2>
+    <div class="user-info">
+      <button id="logout-btn">logout</button>
+      <p>
+        Hello <span id="username"></span>, Your rating:<span
+          id="user-rating"
+        ></span>
+      </p>
+    </div>
+    <div class="users-container"></div>
+
+    <div class="modal none" id="waiting-modal">
+      <div class="modal-contact">
+        <p class="message">Waiting for the second player to respond</p>
+        <div class="btn-container">
+          <button id="cancel-invite" class="modal-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal none" id="get-invite-modal">
+      <div class="modal-contact">
+        <div>
+          <p class="message">
+            <span id="opponent-name"></span> which is rated
+            <span id="opponent-rating"></span> sent you a game invitation
+            <br />Do you want to play?
+          </p>
+        </div>
+        <div class="btns-container">
+          <button id="approve-invite" class="modal-btn">Yes</button>
+          <button id="decline-invite" class="modal-btn">NO</button>
+        </div>
+      </div>
+    </div>
+
+    <script id="users-template" type="text/html">
+      <h3>Name</h3>
+      <h3>Rating</h3>
+      <h3>Invite</h3>
+      {{#users}}
+      <span>{{username}}</span>
+      <span>{{rating}}</span>
+      <button id="{{id}}" class="invite-btn" {{canBeInvited}}>Invite</button>
+      {{/users}}
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/logout.js"></script>
+    <script src="/js/lobby.js"></script>
+  </body>
+</html>
